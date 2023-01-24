@@ -4,7 +4,6 @@
 **/
 
 import {Vista} from './vista.js'
-import {Moto} from './moto.js'
 
 /**
 	Vista del Listar
@@ -20,9 +19,12 @@ export class VistaListar extends Vista{
 		super(div)
 		this.controlador = controlador
 
-		this.btnListar = document.getElementById('listar')
-		this.btnListar.onclick = this.pulsarListar.bind(this)
-		this.divMotos = document.getElementById('motos')
+		//this.btnListar = document.getElementById('listar')
+		this.btnListar = $("#listar")
+		//this.btnListar.onclick = this.pulsarListar.bind(this)
+		this.btnListar.click(this.pulsarListar.bind(this))
+		//this.divMotos = document.getElementById('motos')
+		this.divMotos = $("#motos")
 	}
 	pulsarListar(){
 		const solicitud = window.indexedDB.open('bd1')
@@ -39,6 +41,16 @@ export class VistaListar extends Vista{
 				for (let moto of motos){
 					this.crearTarjetas(moto)
 				}
+				this.divTarjetaAnadir = document.createElement("div")
+				this.divTarjetaAnadir.classList.add('tarjeta')
+				this.divTarjetaAnadir.setAttribute("id","tarjetaAnadir")
+				this.divMotos.appendChild(this.divTarjetaAnadir)
+
+
+				this.spanAnadir = document.createElement("span")
+				this.spanAnadir.setAttribute("id","anadir2")
+				this.spanAnadir.textContent = "+"
+				this.divTarjetaAnadir.appendChild(this.spanAnadir)
 			}).bind(this)
 		}
 	}
@@ -47,7 +59,7 @@ export class VistaListar extends Vista{
 		this.divTarjeta = document.createElement("div")
 		this.divTarjeta.classList.add('tarjeta')
 		this.divMotos.appendChild(this.divTarjeta)
-
+		
 		this.divImagen = document.createElement("div")
 		this.divTarjeta.appendChild(this.divImagen)
 		this.imagen = document.createElement("img")
@@ -73,5 +85,10 @@ export class VistaListar extends Vista{
 		this.iconoBorrar.classList.add("fa-trash-can")
 		this.spanBorrar.appendChild(this.iconoBorrar)
 		this.divBotones.appendChild(this.spanBorrar)
+
+		this.divAnadir = document.createElement("div")
+		this.divAnadir.classList.add("tarjeta")
+		this.divAnadir.setAttribute("id", "tarjetaAnadir")
+		this.divTarjeta.appendChild(this.divAnadir)
 	}
 }
