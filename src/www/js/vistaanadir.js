@@ -18,52 +18,78 @@ export class VistaAnadir extends Vista{
 		super(div)
 		this.controlador = controlador
 
-		this.imagenMoto = document.getElementsByClassName('imagen')[0]
+		//this.imagenMoto = document.getElementsByClassName('imagen')[0]
+		this.imagenMoto = $("#imagenA")
 		console.log(this.imagenMoto)
 		this.valorImagen = null
-		this.imagenMoto.addEventListener('change', e => {
+		this.imagenMoto.change( e => {
 			const archivo = this.imagenMoto.files[0]
 			const lector = new FileReader()
-			lector.addEventListener('load',() => {
+			lector.load(() => {
 				this.valorImagen = lector.result
 			})
 			lector.readAsDataURL(archivo)
 		})
 
-		this.btnAceptar = document.getElementById('btnAceptar')
-		this.btnAceptar.onclick = this.pulsarAceptar.bind(this)
+		//this.btnAceptar = document.getElementById('btnAceptar')
+		this.btnAceptar = $("#btnAceptar")
+		//this.btnAceptar.onclick = this.pulsarAceptar.bind(this)
+		this.btnAceptar.click(this.pulsarAceptar.bind(this))
 	}
 	pulsarAceptar(){
 		// Valores a obtener
-		this.marca = document.getElementById('marcaMoto')
+		//this.marca = document.getElementById('marcaMoto')
+		this.marca = $("#marcaMoto")
 		let marca = this.marca.value
 		let tipos = []
-		this.tipo1 = document.getElementById('tipo1')
-		tipos.push(this.tipo1.checked)
-		this.tipo2 = document.getElementById('tipo2')
-		tipos.push(this.tipo2.checked)
-		this.tipo3 = document.getElementById('tipo3')
-		tipos.push(this.tipo3.checked)
-		this.tipo4 = document.getElementById('tipo4')
-		tipos.push(this.tipo4.checked)
-		this.tipo5 = document.getElementById('tipo5')
-		tipos.push(this.tipo5.checked)
+		//this.tipo1 = document.getElementById('tipo1')
+		//tipos.push(this.tipo1.checked)
+		this.tipo1 = $("#tipo1")
+		tipos.push(this.tipo1.is(":checked"))
+		//this.tipo2 = document.getElementById('tipo2')
+		//tipos.push(this.tipo2.checked)
+		this.tipo2 = $("#tipo2")
+		tipos.push(this.tipo2.is(":checked"))
+		//this.tipo3 = document.getElementById('tipo3')
+		//tipos.push(this.tipo3.checked)
+		this.tipo3 = $("#tipo3")
+		tipos.push(this.tipo3.is(":checked"))
+		//this.tipo4 = document.getElementById('tipo4')
+		//tipos.push(this.tipo4.checked)
+		this.tipo4 = $("#tipo4")
+		tipos.push(this.tipo4.id(":checked"))
+		//this.tipo5 = document.getElementById('tipo5')
+		//tipos.push(this.tipo5.checked)
+		this.tipo5 = $("#tipo5")
+		tipos.push(this.tipo5.id(":checked"))
 		let extras = []
-		this.extra1 = document.getElementById('extra1')
-		extras.push(this.extra1.checked)
-		this.extra2 = document.getElementById('extra2')
-		extras.push(this.extra2.checked)
-		this.extra3 = document.getElementById('extra3')
-		extras.push(this.extra3.checked)
-		this.extra4 = document.getElementById('extra4')
-		extras.push(this.extra4.checked)
-		this.anio = document.getElementById('anio')
+		//this.extra1 = document.getElementById('extra1')
+		//extras.push(this.extra1.checked)
+		this.extra1 = $("#extra1")
+		extras.push(this.extra1.is(":checked"))
+		//this.extra2 = document.getElementById('extra2')
+		//extras.push(this.extra2.checked)
+		this.extra2 = $("#extra2")
+		extras.push(this.extra2.is(":checked"))
+		//this.extra3 = document.getElementById('extra3')
+		//extras.push(this.extra3.checked)
+		this.extra3 = $("#extra3")
+		extras.push(this.extra3.is(":checked"))
+		//this.extra4 = document.getElementById('extra4')
+		//extras.push(this.extra4.checked)
+		this.extra4 = $("#extra4")
+		extras.push(this.extra4.is(":checked"))
+		//this.anio = document.getElementById('anio')
+		this.anio = $("#anio")
 		let anio = this.anio.value
-		this.km = document.getElementById('kilometros')
+		//this.km = document.getElementById('kilometros')
+		this.km = $("#kilometros")
 		let km = this.km.value
-		this.precio = document.getElementById('precio')
+		//this.precio = document.getElementById('precio')
+		this.precio = $("#precio")
 		let precio = this.precio.value
-		this.descripcion = document.getElementById('descripcion')
+		//this.descripcion = document.getElementById('descripcion')
+		this.descripcion = $("#descripcion")
 		let descripcion = this.descripcion.value
 		if(tipos[0] == true){
 			tipos[0] = 'Sport'
