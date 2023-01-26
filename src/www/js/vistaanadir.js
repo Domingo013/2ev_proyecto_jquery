@@ -17,9 +17,9 @@ export class VistaAnadir extends Vista{
 	constructor(div, controlador){
 		super(div)
 		this.controlador = controlador
-
+		
 		//this.imagenMoto = document.getElementsByClassName('imagen')[0]
-		this.imagenMoto = $('#imagen')
+		this.imagenMoto = $('#imagenA')
 		console.log(this.imagenMoto)
 		this.valorImagen = null
 		this.imagenMoto.on('change', e => {
@@ -35,7 +35,24 @@ export class VistaAnadir extends Vista{
 		this.btnAceptar = $("#btnAceptar")
 		//this.btnAceptar.onclick = this.pulsarAceptar.bind(this)
 		this.btnAceptar.click(this.pulsarAceptar.bind(this))
+		this.btnAceptar.button()
+
+		//this.btnCancelar = document.getElementById('btnCancelar')
+		this.btnCancelar = $("#btnCancelar")
+		//this.btnAceptar.onclick = this.pulsarAceptar.bind(this)
+		this.btnCancelar.click(this.pulsarCancelar.bind(this))
+		this.btnCancelar.button()
 		
+		this.fechaa = $("#anio")
+		this.fechaa.datepicker()
+
+		this.inputKilometros = $("#kilometros")
+		this.inputKilometros.tooltip()
+		this.inputPrecio = $("#precio")
+		this.inputPrecio.tooltip()
+		this.inputDescripcion = $("#descripcion")
+		this.inputDescripcion.tooltip()
+
 	}
 	pulsarAceptar(){
 		// Valores a obtener
@@ -125,6 +142,8 @@ export class VistaAnadir extends Vista{
 		let objeto = new Moto(marca, tipos, extras, anio, km, precio, descripcion, this.valorImagen)
 		this.controlador.insertar(objeto)
 		// console.log(objeto)
-
+	}
+	pulsarCancelar(){
+		this.controlador.pulsarNavListar()
 	}
 }
