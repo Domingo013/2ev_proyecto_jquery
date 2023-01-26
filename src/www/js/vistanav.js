@@ -21,8 +21,6 @@ export class VistaNav{
 		this.liAnadir = $("#anadir")
 		//this.liModificar = this.header.getElementsByTagName('li')[3]
 		this.liModificar = $("#modificar")
-		//this.spanAnadir = document.getElementById('anadir2')
-		this.spanAnadir = $("#anadir2")
 
 		//this.liListar.onclick = this.pulsarListar.bind(this)
 		this.liListar.click(this.pulsarListar.bind(this))
@@ -30,8 +28,6 @@ export class VistaNav{
 		this.liAnadir.click(this.pulsarAnadir.bind(this))
 		//this.liModificar.onclick = this.pulsarModificar.bind(this)
 		this.liModificar.click(this.pulsarModificar.bind(this))
-		//this.spanAnadir.onclick = this.pulsarAnadir.bind(this)
-		this.spanAnadir.click(this.pulsarAnadir.bind(this))
 
 	}
 	/**

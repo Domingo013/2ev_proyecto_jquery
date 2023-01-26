@@ -19,13 +19,13 @@ export class VistaAnadir extends Vista{
 		this.controlador = controlador
 
 		//this.imagenMoto = document.getElementsByClassName('imagen')[0]
-		this.imagenMoto = $("#imagenA")
+		this.imagenMoto = $('#imagen')
 		console.log(this.imagenMoto)
 		this.valorImagen = null
-		this.imagenMoto.change( e => {
-			const archivo = this.imagenMoto.files[0]
+		this.imagenMoto.on('change', e => {
+			const archivo = this.imagenMoto[0].files[0]
 			const lector = new FileReader()
-			lector.load(() => {
+			lector.addEventListener('load',() => {
 				this.valorImagen = lector.result
 			})
 			lector.readAsDataURL(archivo)
@@ -35,12 +35,13 @@ export class VistaAnadir extends Vista{
 		this.btnAceptar = $("#btnAceptar")
 		//this.btnAceptar.onclick = this.pulsarAceptar.bind(this)
 		this.btnAceptar.click(this.pulsarAceptar.bind(this))
+		
 	}
 	pulsarAceptar(){
 		// Valores a obtener
 		//this.marca = document.getElementById('marcaMoto')
 		this.marca = $("#marcaMoto")
-		let marca = this.marca.value
+		let marca = this.marca.val()
 		let tipos = []
 		//this.tipo1 = document.getElementById('tipo1')
 		//tipos.push(this.tipo1.checked)
@@ -57,11 +58,11 @@ export class VistaAnadir extends Vista{
 		//this.tipo4 = document.getElementById('tipo4')
 		//tipos.push(this.tipo4.checked)
 		this.tipo4 = $("#tipo4")
-		tipos.push(this.tipo4.id(":checked"))
+		tipos.push(this.tipo4.is(":checked"))
 		//this.tipo5 = document.getElementById('tipo5')
 		//tipos.push(this.tipo5.checked)
 		this.tipo5 = $("#tipo5")
-		tipos.push(this.tipo5.id(":checked"))
+		tipos.push(this.tipo5.is(":checked"))
 		let extras = []
 		//this.extra1 = document.getElementById('extra1')
 		//extras.push(this.extra1.checked)
@@ -81,16 +82,16 @@ export class VistaAnadir extends Vista{
 		extras.push(this.extra4.is(":checked"))
 		//this.anio = document.getElementById('anio')
 		this.anio = $("#anio")
-		let anio = this.anio.value
+		let anio = this.anio.val()
 		//this.km = document.getElementById('kilometros')
 		this.km = $("#kilometros")
-		let km = this.km.value
+		let km = this.km.val()
 		//this.precio = document.getElementById('precio')
 		this.precio = $("#precio")
-		let precio = this.precio.value
+		let precio = this.precio.val()
 		//this.descripcion = document.getElementById('descripcion')
 		this.descripcion = $("#descripcion")
-		let descripcion = this.descripcion.value
+		let descripcion = this.descripcion.val()
 		if(tipos[0] == true){
 			tipos[0] = 'Sport'
 		}

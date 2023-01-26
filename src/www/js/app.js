@@ -36,6 +36,7 @@ class Controlador{
 		this.divListar = $("#divListar")
 		//this.divAnadir= document.getElementById('divAnadir')
 		this.divAnadir = $("#divAnadir")
+		this.tarjetaAnadir = $("#targetaAnadir")
 		//this.divModificar = document.getElementById('divModificar')
 		this.divModificar = $("#divModificar")
 

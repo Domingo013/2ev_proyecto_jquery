@@ -25,13 +25,16 @@ export class VistaListar extends Vista{
 		this.btnListar.click(this.pulsarListar.bind(this))
 		//this.divMotos = document.getElementById('motos')
 		this.divMotos = $("#motos")
+
 	}
+
 	pulsarListar(){
 		const solicitud = window.indexedDB.open('bd1')
 		solicitud.onsuccess = (evento) =>{
 			//borrar el divMotos
-			while (this.divMotos.firstChild)
-				this.divMotos.firstChild.remove()
+			/*while (this.divMotos.firstChild)
+				this.divMotos.firstChild.remove()*/
+			this.divMotos.empty()
 			this.bd = evento.target.result;
 			console.log('Base de datos cargada')
 			const objectStore = this.bd.transaction('tablaMotos', 'readonly').objectStore('tablaMotos')
@@ -50,12 +53,18 @@ export class VistaListar extends Vista{
 
 				//this.spanAnadir = document.createElement("span")
 				//this.spanAnadir.setAttribute("id","anadir2")
-				this.spanAnadir = $("<span id='anadir2'>")
+				this.spanAnadir = $("<p id='anadir2'>")
 				this.spanAnadir.text("+")
 				//this.divTarjetaAnadir.appendChild(this.spanAnadir)
 				this.divTarjetaAnadir.append(this.spanAnadir)
+				//this.tarjetaAnadir.onclick = this.pulsarAnadir.bind(this)
+				this.divTarjetaAnadir.click(this.pulsarAnadir.bind(this))
 			}).bind(this)
 		}
+	}
+
+	pulsarAnadir(){
+		this.controlador.pulsarNavAnadir()
 	}
 
 	crearTarjetas(moto){
