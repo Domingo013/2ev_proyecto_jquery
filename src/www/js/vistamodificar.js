@@ -39,6 +39,9 @@ export class VistaModificar extends Vista{
 		this.inputDescripcion = $("#descripcion2")
 		this.inputDescripcion.tooltip()
 
+		this.inputMarca = $("#marcaMoto2")
+		this.inputMarca.selectmenu()
+
 	}
 	
 }

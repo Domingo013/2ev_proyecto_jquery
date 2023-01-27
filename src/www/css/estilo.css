@@ -169,6 +169,12 @@ footer{
 	cursor: pointer;
 }
 
+#draggable{
+	width: 100px;
+	height: auto;
+	position: absolute;
+}
+
 .tarjeta:hover{
 	transform: scale(1.15);
 }

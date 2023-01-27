@@ -53,6 +53,12 @@ export class VistaAnadir extends Vista{
 		this.inputDescripcion = $("#descripcion")
 		this.inputDescripcion.tooltip()
 
+		this.dialogo = $("#dialog")
+		this.dialogo.dialog()
+
+		this.inputMarca = $("#marcaMoto")
+		this.inputMarca.selectmenu()
+
 	}
 	pulsarAceptar(){
 		// Valores a obtener
@@ -135,6 +141,7 @@ export class VistaAnadir extends Vista{
 		}
 		if(extras[3] == true){
 			extras[3] = 'Bluetooth'
+
 		}
 
 		//Leer y validar los datos del formulario

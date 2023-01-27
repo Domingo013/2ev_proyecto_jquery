@@ -47,6 +47,9 @@ class Controlador{
 
 		//this.vista = new Vista(this, document.getElementById('divAnadir'))
 		this.vista = new Vista(this, this.divAnadir)
+
+		this.moverMoto()
+
 	}
 	insertar(objeto){
 		this.modelo.insertar(objeto, this.insertarOK.bind(this))
@@ -82,6 +85,11 @@ class Controlador{
 	pulsarNavModificar(){
 		this.ocultarVistas()
 		this.vistaModificar.mostrar(true)
+	}
+	moverMoto(){
+		this.moto = $("#draggable")
+		console.log("mototototo0t")
+		this.moto.draggable()
 	}
 	/**
 	 * Devuelve el modelo de la aplicación
